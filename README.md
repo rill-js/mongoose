@@ -2,7 +2,7 @@
 
 # @rill/mongoose
 
-Mongoose REST api generator for Rill with flexable defaults.
+Mongoose REST api generator for Rill with flexible defaults.
 
 # Installation
 
@@ -91,7 +91,7 @@ fetch('/user?age=10&loggedIn[$gt]=' + new Date(2015)) // Find all users who are 
 
 #### Special Query Operators
 
-There are some special operators to make working with the api more flexable.
+There are some special operators to make working with the api more flexible.
 
 + **$skip** : skip a number of results.
 
