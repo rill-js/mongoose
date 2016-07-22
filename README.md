@@ -207,7 +207,7 @@ Mongoose validation is also automatically handled for `POST|PUT|PATCH` requests.
 fetch('/user', {
 	method: 'POST',
 	body: JSON.stringify({
-		name: undefiend // This will fail because `name` is required.
+		name: null // This will fail because `name` is required.
 	})
 })
 	.then(res => {
@@ -216,7 +216,9 @@ fetch('/user', {
 		res.headers.get('X-Error-Message') //-> 'Path `name` is required.'
 		return res.json()
 	})
-	.then(ValidationError => // Also sends the validation error as JSON.)
+	.then(ValidationError => {
+		// Also sends the validation error as JSON.
+	})
 ```
 
 ---
