@@ -30,7 +30,8 @@ const app = Rill();
 
 // Create any mongoose model.
 const User = mongoose.model('user', {
-	name: { type: String }
+	name: { type: String },
+	hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessable through any part of the api.
 })
 
 // Setup a "GET/find" request for the user route using the optimized default middleware.
