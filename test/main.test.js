@@ -14,7 +14,7 @@ mongoose.connect('localhost/testDb')
 mongoose.Promise = Promise
 
 const Model = mongoose.model('test', {
-  name: { type: String },
+  name: { type: String, required: true },
   test: { type: Boolean },
   hidden: { type: String, hidden: true },
   related: { type: mongoose.Schema.ObjectId, ref: 'test' }
@@ -171,7 +171,7 @@ reset()
 
 reset()
 ;test('POST', function (t) {
-  t.plan(3)
+  t.plan(4)
 
   const request = agent(rill()
     .use(require('@rill/body')())
@@ -200,11 +200,18 @@ reset()
         t.equal(doc.extra, undefined, 'POST extra field')
       })
     }, t.fail)
+
+  request
+    .post('/test')
+    .send(_.assign(_.clone(validDoc), { name: null }))
+    .expect(400)
+    .expect('X-Error-Message', 'Path `name` is required.')
+    .then(t.pass.bind(t, 'POST validation'), t.fail)
 })
 
 reset()
 ;test('PUT', function (t) {
-  t.plan(2)
+  t.plan(3)
 
   const request = agent(rill()
     .use(require('@rill/body')())
@@ -236,6 +243,13 @@ reset()
           const actual = _.omit(res.body, '_id')
           t.deepEqual(actual, putDoc, 'PUT document')
         }, t.fail)
+
+      request
+        .put('/test/' + testDoc._id)
+        .send(_.assign(_.clone(validDoc), { name: null }))
+        .expect(400)
+        .expect('X-Error-Message', 'Path `name` is required.')
+        .then(t.pass.bind(t, 'PUT validation'), t.fail)
     }, t.fail)
 
   request
@@ -246,7 +260,7 @@ reset()
 
 reset()
 ;test('PATCH', function (t) {
-  t.plan(2)
+  t.plan(3)
 
   const request = agent(rill()
     .use(require('@rill/body')())
@@ -279,6 +293,13 @@ reset()
           const expected = _.assign(_.clone(validDoc), patchDoc)
           t.deepEqual(actual, expected, 'PATCH document')
         }, t.fail)
+
+      request
+        .patch('/test/' + testDoc._id)
+        .send(_.assign(_.clone(validDoc), { name: null }))
+        .expect(400)
+        .expect('X-Error-Message', 'Path `name` is required.')
+        .then(t.pass.bind(t, 'PATCH validation'), t.fail)
     }, t.fail)
 
   request

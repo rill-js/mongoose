@@ -23,14 +23,14 @@ npm install @rill/mongoose
 # Example Setup
 
 ```javascript
-const Rill = require("rill");
-const resource = require("@rill/mongoose");
+const Rill = require('rill')
+const resource = require('@rill/mongoose')
 
-const app = Rill();
+const app = Rill()
 
 // Create any mongoose model.
 const User = mongoose.model('user', {
-	name: { type: String },
+	name: { type: String, required: true },
 	hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessable through any part of the api.
 })
 
@@ -197,6 +197,26 @@ fetch('/user/000000000000000000000000', { method: 'DELETE' })
 		// I was deleted :(.
 		console.log(user._id)
 	})
+```
+
+# Validation
+
+Mongoose validation is also automatically handled for `POST|PUT|PATCH` requests.
+
+```
+fetch('/user', {
+	method: 'POST',
+	body: JSON.stringify({
+		name: undefiend // This will fail because `name` is required.
+	})
+})
+	.then(res => {
+		// Automatically sets status and an error message header.
+		res.status //-> 400
+		res.headers.get('X-Error-Message') //-> 'Path `name` is required.'
+		return res.json()
+	})
+	.then(ValidationError => // Also sends the validation error as JSON.)
 ```
 
 ---
