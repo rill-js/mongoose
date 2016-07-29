@@ -26,7 +26,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, { find: 'default', findById: 'default' }))
+    .use(resource(Model, { find: 'default', findById: 'default' }))
     .listen())
 
   // GET all
@@ -175,7 +175,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, { create: 'default' }))
+    .use(resource(Model, { create: 'default' }))
     .listen())
 
   const validDoc = {
@@ -215,7 +215,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, { create: 'default', save: 'default' }))
+    .use(resource(Model, { create: 'default', save: 'default' }))
     .listen())
 
   const validDoc = {
@@ -264,7 +264,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, { create: 'default', save: 'default' }))
+    .use(resource(Model, { create: 'default', save: 'default' }))
     .listen())
 
   const validDoc = {
@@ -314,7 +314,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, { remove: 'default' }))
+    .use(resource(Model, { remove: 'default' }))
     .listen())
 
   request
@@ -338,7 +338,7 @@ reset()
 
   const request = agent(rill()
     .use(require('@rill/body')())
-    .setup(resource(Model, {
+    .use(resource(Model, {
       find: respondWith(200, 'find'),
       findById: respondWith(200, 'findById'),
       create: respondWith(200, 'create'),

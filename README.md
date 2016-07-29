@@ -35,7 +35,7 @@ const User = mongoose.model('user', {
 })
 
 // Setup a "GET/find" request for the user route using the optimized default middleware.
-app.setup(resource(User, { find: 'default' }))
+app.use(resource(User, { find: 'default' }))
 ```
 
 # Example Consumption
@@ -52,13 +52,13 @@ fetch('/user?$select=name&$limit=10')
 	})
 ```
 
-# Setup API
+# API
 
 + **resource([path: String], Model: Mongoose.model, methods: Object)** : Creates a REST api for the provided model with the configured methods.
 
 ```js
 // Choose which methods to enable.
-app.setup(resource(UserModel, {
+app.use(resource(UserModel, {
 	// `GET` requests.
 	find: 'default',
 	// `GET/:id` requests.
@@ -72,13 +72,13 @@ app.setup(resource(UserModel, {
 }))
 
 // Add more middleware to methods (while optionally still using defaults).
-app.setup(resource(PermissionsModel, {
+app.use(resource(PermissionsModel, {
 	// Runs `restrictAdmin` middleware before the default middleware.
 	find: [restrictAdmin, 'default']
 }))
 
 // Also override the default path for the handlers.
-app.setup(resource('/somepath', SomeOtherModel, ...))
+app.use(resource('/somepath', SomeOtherModel, ...))
 ```
 
 # Query API
