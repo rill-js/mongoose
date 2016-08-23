@@ -1,7 +1,8 @@
 <h1 align="center" >
   <!-- Logo -->
   <img src="https://raw.githubusercontent.com/rill-js/rill/master/Rill-Icon.jpg" alt="Rill"/>
-  <span style="line-height:150px">@rill/mongoose</span>
+  <br/>
+  @rill/mongoose
 	<br/>
 
   <!-- Stability -->
