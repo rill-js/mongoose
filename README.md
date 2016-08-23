@@ -15,7 +15,7 @@
   </a>
   <!-- NPM version -->
   <a href="https://npmjs.org/package/@rill/mongoose">
-    <img src="https://img.shields.io/npm/v/rill.svg?style=flat-square" alt="NPM version"/>
+    <img src="https://img.shields.io/npm/v/@rill/mongoose.svg?style=flat-square" alt="NPM version"/>
   </a>
   <!-- Downloads -->
   <a href="https://npmjs.org/package/@rill/mongoose">
