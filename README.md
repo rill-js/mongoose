@@ -27,9 +27,9 @@
   </a>
 </h1>
 
-# Description
-
-Mongoose REST api generator for Rill with flexible defaults.
+<div align="center">
+  Mongoose REST api generator for Rill with flexible defaults and easy overrides.
+</div>
 
 # Installation
 
