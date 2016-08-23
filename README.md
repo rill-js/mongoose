@@ -26,7 +26,6 @@
     <img src="https://img.shields.io/gitter/room/rill-js/rill.svg?style=flat-square" alt="Gitter Chat"/>
   </a>
 </h1>
-<hr/>
 
 # Description
 
