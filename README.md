@@ -1,6 +1,34 @@
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+<h1 align="center">
+  <!-- Logo -->
+  <img src="https://raw.githubusercontent.com/rill-js/rill/master/Rill-Icon.jpg" alt="Rill"/>
+  @rill/mongoose
+	<br/>
 
-# @rill/mongoose
+  <!-- Stability -->
+  <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
+    <img src="https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square" alt="API stability"/>
+  </a>
+  <!-- Standard -->
+  <a href="https://github.com/feross/standard">
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard"/>
+  </a>
+  <!-- NPM version -->
+  <a href="https://npmjs.org/package/@rill/mongoose">
+    <img src="https://img.shields.io/npm/v/rill.svg?style=flat-square" alt="NPM version"/>
+  </a>
+  <!-- Downloads -->
+  <a href="https://npmjs.org/package/@rill/mongoose">
+    <img src="https://img.shields.io/npm/dm/rill.svg?style=flat-square" alt="Downloads"/>
+  </a>
+  <!-- Gitter Chat -->
+  <a href="https://gitter.im/rill-js/rill">
+    <img src="https://img.shields.io/gitter/room/rill-js/rill.svg?style=flat-square" alt="Gitter Chat"/>
+  </a>
+</h1>
+
+---
+
+# Description
 
 Mongoose REST api generator for Rill with flexible defaults.
 
@@ -31,7 +59,7 @@ const app = Rill()
 // Create any mongoose model.
 const User = mongoose.model('user', {
 	name: { type: String, required: true },
-	hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessable through any part of the api.
+	hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessible through any part of the api.
 })
 
 // Setup a "GET/find" request for the user route using the optimized default middleware.
@@ -83,7 +111,7 @@ app.use(resource('/somepath', SomeOtherModel, ...))
 
 # Query API
 
-The `querystring` is sanatized then passed into `Model.find` allowing for any sort of Mongoose style query in a safe way.
+The `querystring` is sanitized then passed into `Model.find` allowing for any sort of Mongoose style query in a safe way.
 
 ```js
 fetch('/user?age=10&loggedIn[$gt]=' + new Date(2015)) // Find all users who are age 10 and have logged in after 2015.
@@ -127,7 +155,7 @@ fetch('/user?$populate=posts friends') // Will `populate` the `posts` and `frien
 // populate specific fields. (wrap fields in "[]")
 fetch('/user?$populate=posts[title date]') // `populate` posts for each user but only include the post title and date.
 
-// nested populate. (seperate nested populate with ":")
+// nested populate. (separate nested populate with ":")
 fetch('/user?$populate=posts[author]:author[name]') // `populate` all `posts`, with only the `author` - then populate all posts authors with only their `name`.
 ```
 
@@ -187,7 +215,7 @@ fetch('/user/000000000000000000000000', {
 
 # Removing documents
 
-You can use `DELETE/:id` to permenatly remove a document.
+You can use `DELETE/:id` to permanently remove a document.
 
 ```js
 // Remove an existing user.
