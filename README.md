@@ -1,8 +1,8 @@
-<h1 align="center" >
+<div align="center">
   <!-- Logo -->
   <img src="https://raw.githubusercontent.com/rill-js/rill/master/Rill-Icon.jpg" alt="Rill"/>
   <br/>
-  @rill/mongoose
+  <h1 style="border-bottom:none">@rill/mongoose</h1>
 	<br/>
 
   <!-- Stability -->
@@ -25,7 +25,9 @@
   <a href="https://gitter.im/rill-js/rill">
     <img src="https://img.shields.io/gitter/room/rill-js/rill.svg?style=flat-square" alt="Gitter Chat"/>
   </a>
-</h1>
+</div>
+
+---
 
 # Description
 
