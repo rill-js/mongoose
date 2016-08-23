@@ -27,8 +27,6 @@
   </a>
 </h1>
 
----
-
 # Description
 
 Mongoose REST api generator for Rill with flexible defaults.
