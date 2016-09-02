@@ -1,4 +1,4 @@
-# Editor
+# Sublime
 *.sublime*
 
 # OSX
@@ -6,3 +6,4 @@
 
 # NPM
 node_modules
+npm-debug.log

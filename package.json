@@ -1,7 +1,7 @@
 {
   "name": "@rill/mongoose",
   "description": "Resource based crud api generator for Rill and Mongoose.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "browser": "browser.js",
   "bugs": "https://github.com/rill-js/mongoose/issues",
@@ -9,12 +9,12 @@
     "del-values": "^1.0.0"
   },
   "devDependencies": {
-    "@rill/body": "^1.2.0",
+    "@rill/body": "^1.2.1",
     "lodash": "^4.15.0",
-    "mongoose": "^4.5.9",
+    "mongoose": "^4.6.0",
     "rill": "^0.8.10",
     "snazzy": "^4.0.1",
-    "standard": "^8.0.0-beta.5",
+    "standard": "^8.0.0",
     "supertest": "^2.0.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0"

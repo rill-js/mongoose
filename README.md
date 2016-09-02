@@ -27,13 +27,9 @@
   </a>
 </h1>
 
-<div align="center">
-  Mongoose REST api generator for Rill with flexible defaults and easy overrides.
-</div>
+Mongoose REST api generator for Rill with flexible defaults and easy overrides.
 
 # Installation
-
-#### Npm
 
 ```console
 npm install @rill/mongoose
