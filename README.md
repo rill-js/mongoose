@@ -108,6 +108,8 @@ app.use(resource('/somepath', SomeOtherModel, ...))
 
 The `querystring` is sanitized then passed into `Model.find` allowing for any sort of Mongoose style query in a safe way.
 
+All queries will also add an `X-Total-Count` http header which is the total number of documents found ignoring `$skip` and `$limit`, useful for pagination.
+
 ```js
 fetch('/user?age=10&loggedIn[$gt]=' + new Date(2015)) // Find all users who are age 10 and have logged in after 2015.
 ```
@@ -239,8 +241,8 @@ fetch('/user', {
 		res.headers.get('X-Error-Message') //-> 'Path `name` is required.'
 		return res.json()
 	})
-	.then(ValidationError => {
-		// Also sends the validation error as JSON.
+	.then(({ error }) => {
+		error.name === 'ValidationError'// Also sends the validation error as JSON.
 	})
 ```
 
