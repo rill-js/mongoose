@@ -1,2 +1,2 @@
 'use strict'
-throw new Error('Tried to load Crudge in the browser. Crudge is meant for server side api\'s with mongoose.')
+throw new Error('Tried to load @rill/mongoose in the browser. It is meant for server side api\'s with mongoose.')

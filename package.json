@@ -11,13 +11,12 @@
   "devDependencies": {
     "@rill/body": "^1.2.1",
     "lodash": "^4.15.0",
-    "mongoose": "^4.6.0",
-    "rill": "^1.0.0",
-    "snazzy": "^4.0.1",
-    "standard": "^8.0.0",
-    "supertest": "^2.0.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "mocha": "^3.4.2",
+    "mongoose": "^4.10.8",
+    "rill": "^5.0.5",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2",
+    "supertest": "^3.0.0"
   },
   "homepage": "https://github.com/rill-js/mongoose",
   "keywords": [
@@ -41,6 +40,16 @@
   },
   "scripts": {
     "lint": "standard --verbose | snazzy",
-    "test": "npm run lint && tape ./**/*.test.js | tap-spec"
+    "test": "npm run lint && mocha ./**/*.test.js"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
   }
 }
