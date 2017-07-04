@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/rill-js/rill/master/Rill-Icon.jpg" alt="Rill"/>
   <br/>
   @rill/mongoose
-	<br/>
+  <br/>
 
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
@@ -53,8 +53,8 @@ const app = Rill()
 
 // Create any mongoose model.
 const User = mongoose.model('user', {
-	name: { type: String, required: true },
-	hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessible through any part of the api.
+  name: { type: String, required: true },
+  hidden: { type: String, hidden: true } // Any fields marked as hidden will not be accessible through any part of the api.
 })
 
 // Setup a "GET/find" request for the user route using the optimized default middleware.
@@ -66,13 +66,13 @@ app.use(resource(User, { find: 'default' }))
 ```js
 // Consume using WHATWG Fetch api.
 fetch('/user?$select=name&$limit=10')
-	.then(res => res.json())
-	.then(users => {
-		/**
-		 * Returns up to 10 users
-		 * with only the `_id` and `name` fields selected.
-		 */
-	})
+  .then(res => res.json())
+  .then(users => {
+    /**
+     * Returns up to 10 users
+     * with only the `_id` and `name` fields selected.
+     */
+  })
 ```
 
 # API
@@ -82,22 +82,22 @@ fetch('/user?$select=name&$limit=10')
 ```js
 // Choose which methods to enable.
 app.use(resource(UserModel, {
-	// `GET` requests.
-	find: 'default',
-	// `GET/:id` requests.
-	findById: 'default',
-	// `POST` requests.
-	create: 'default',
-	// `PUT|PATCH/:id` requests.
-	save: 'default',
-	// `DELETE/:id` requests.
-	remove: 'default'
+  // `GET` requests.
+  find: 'default',
+  // `GET/:id` requests.
+  findById: 'default',
+  // `POST` requests.
+  create: 'default',
+  // `PUT|PATCH/:id` requests.
+  save: 'default',
+  // `DELETE/:id` requests.
+  remove: 'default'
 }))
 
 // Add more middleware to methods (while optionally still using defaults).
 app.use(resource(PermissionsModel, {
-	// Runs `restrictAdmin` middleware before the default middleware.
-	find: [restrictAdmin, 'default']
+  // Runs `restrictAdmin` middleware before the default middleware.
+  find: [restrictAdmin, 'default']
 }))
 
 // Also override the default path for the handlers.
@@ -163,17 +163,17 @@ You can `POST` to the api to create new documents for the `Model`.
 ```js
 // Create a new user.
 fetch('/user', {
-	method: 'POST',
-	body: JSON.stringify({
-		name: 'Cool Api Dude',
-		hidden: 'Test' // Hidden fields and extra fields will be ignored.
-	})
+  method: 'POST',
+  body: JSON.stringify({
+    name: 'Cool Api Dude',
+    hidden: 'Test' // Hidden fields and extra fields will be ignored.
+  })
 })
-	.then(res => res.json())
-	.then(user => {
-		// New user created!
-		console.log(user._id)
-	})
+  .then(res => res.json())
+  .then(user => {
+    // New user created!
+    console.log(user._id)
+  })
 ```
 
 # Updating documents
@@ -183,31 +183,31 @@ You can use `PUT/:id` to replace an existing document and `PATCH/:id` to update 
 ```js
 // Overwrite an existing user.
 fetch('/user/000000000000000000000000', {
-	method: 'PUT',
-	body: JSON.stringify({
-		// Completely overwrite all fields.
-		name: 'Cool Api Dude'
-	})
+  method: 'PUT',
+  body: JSON.stringify({
+    // Completely overwrite all fields.
+    name: 'Cool Api Dude'
+  })
 })
-	.then(res => res.json())
-	.then(user => {
-		// Updated user!
-		console.log(user._id)
-	})
+  .then(res => res.json())
+  .then(user => {
+    // Updated user!
+    console.log(user._id)
+  })
 
 // Update an existing user.
 fetch('/user/000000000000000000000000', {
-	method: 'PATCH',
-	body: JSON.stringify({
-		// Will only update `name` leaving other fields as is.
-		name: 'Cool Api Dude'
-	})
+  method: 'PATCH',
+  body: JSON.stringify({
+    // Will only update `name` leaving other fields as is.
+    name: 'Cool Api Dude'
+  })
 })
-	.then(res => res.json())
-	.then(user => {
-		// Updated user!
-		console.log(user._id)
-	})
+  .then(res => res.json())
+  .then(user => {
+    // Updated user!
+    console.log(user._id)
+  })
 ```
 
 # Removing documents
@@ -217,11 +217,11 @@ You can use `DELETE/:id` to permanently remove a document.
 ```js
 // Remove an existing user.
 fetch('/user/000000000000000000000000', { method: 'DELETE' })
-	.then(res => res.json())
-	.then(user => {
-		// I was deleted :(.
-		console.log(user._id)
-	})
+  .then(res => res.json())
+  .then(user => {
+    // I was deleted :(.
+    console.log(user._id)
+  })
 ```
 
 # Validation
@@ -230,20 +230,20 @@ Mongoose validation is also automatically handled for `POST|PUT|PATCH` requests.
 
 ```js
 fetch('/user', {
-	method: 'POST',
-	body: JSON.stringify({
-		name: null // This will fail because `name` is required.
-	})
+  method: 'POST',
+  body: JSON.stringify({
+    name: null // This will fail because `name` is required.
+  })
 })
-	.then(res => {
-		// Automatically sets status and an error message header.
-		res.status //-> 400
-		res.headers.get('X-Error-Message') //-> 'Path `name` is required.'
-		return res.json()
-	})
-	.then(({ error }) => {
-		error.name === 'ValidationError'// Also sends the validation error as JSON.
-	})
+  .then(res => {
+    // Automatically sets status and an error message header.
+    res.status //-> 400
+    res.headers.get('X-Error-Message') //-> 'Path `name` is required.'
+    return res.json()
+  })
+  .then(({ error }) => {
+    error.name === 'ValidationError'// Also sends the validation error as JSON.
+  })
 ```
 
 ---
