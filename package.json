@@ -12,8 +12,8 @@
     "@rill/body": "^1.2.1",
     "lodash": "^4.15.0",
     "mocha": "^3.4.2",
-    "mongoose": "^4.10.8",
-    "rill": "^5.0.5",
+    "mongoose": "^4.11.4",
+    "rill": "^5.0.11",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2",
     "supertest": "^3.0.0"
