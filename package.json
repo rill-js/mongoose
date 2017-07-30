@@ -1,7 +1,7 @@
 {
   "name": "@rill/mongoose",
   "description": "Resource based crud api generator for Rill and Mongoose.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "browser": "browser.js",
   "bugs": "https://github.com/rill-js/mongoose/issues",
