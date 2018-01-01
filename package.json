@@ -9,11 +9,11 @@
     "del-values": "^1.0.0"
   },
   "devDependencies": {
-    "@rill/body": "^1.2.3",
+    "@rill/body": "^1.3.0",
     "lodash": "^4.15.0",
-    "mocha": "^3.5.3",
-    "mongoose": "^4.11.12",
-    "rill": "^5.0.15",
+    "mocha": "^4.1.0",
+    "mongoose": "^5.0.0-rc0",
+    "rill": "^7.0.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "supertest": "^3.0.0"

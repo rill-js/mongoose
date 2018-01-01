@@ -7,10 +7,6 @@ const resource = require('../lib')
 const DATA = require('./data.json')
 const UNUSED_ID = '000000000000000000000000'
 const VISIBLE = ['_id', 'name', 'test', 'related']
-
-mongoose.Promise = Promise
-mongoose.connect('localhost/testDb')
-
 const Model = mongoose.model('test', {
   name: { type: String, required: true },
   test: { type: Boolean },
@@ -19,6 +15,9 @@ const Model = mongoose.model('test', {
 })
 
 describe('@rill/mongoose', () => {
+  before(() => mongoose.connect('mongodb://localhost/rill-mongoose-test'))
+  after(() => mongoose.disconnect())
+
   // Reset database.
   beforeEach(() => {
     return Model
@@ -34,7 +33,8 @@ describe('@rill/mongoose', () => {
     const request = agent(rill()
       .use(require('@rill/body')())
       .use(resource(Model, { find: 'default', findById: 'default' }))
-      .listen())
+      .listen()
+      .unref())
 
     it('should get all', () => {
       return request
@@ -188,7 +188,8 @@ describe('@rill/mongoose', () => {
     const request = agent(rill()
       .use(require('@rill/body')())
       .use(resource(Model, { create: 'default' }))
-      .listen())
+      .listen()
+      .unref())
 
     const validDoc = {
       name: 'Dylan Piercey',
@@ -228,7 +229,8 @@ describe('@rill/mongoose', () => {
     const request = agent(rill()
       .use(require('@rill/body')())
       .use(resource(Model, { create: 'default', save: 'default' }))
-      .listen())
+      .listen()
+      .unref())
 
     const validDoc = {
       name: 'Dylan Piercey',
@@ -281,7 +283,8 @@ describe('@rill/mongoose', () => {
     const request = agent(rill()
       .use(require('@rill/body')())
       .use(resource(Model, { create: 'default', save: 'default' }))
-      .listen())
+      .listen()
+      .unref())
 
     const validDoc = {
       name: 'Dylan Piercey',
@@ -334,7 +337,8 @@ describe('@rill/mongoose', () => {
     const request = agent(rill()
       .use(require('@rill/body')())
       .use(resource(Model, { remove: 'default' }))
-      .listen())
+      .listen()
+      .unref())
 
     it('should delete doc', () => {
       return request
@@ -364,7 +368,8 @@ describe('@rill/mongoose', () => {
         save: respondWith(200, 'save'),
         remove: respondWith(200, 'remove')
       }))
-      .listen())
+      .listen()
+      .unref())
 
     function respondWith (status, message) {
       return (ctx) => {
